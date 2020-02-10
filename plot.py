@@ -4,7 +4,8 @@ from const import *
 
 def plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err_buf):
 
-	fig, axs = plt.subplots(3, 2)
+
+	fig, axs = plt.subplots(3, 2,sharex=True)
 	fig.subplots_adjust(hspace=0.1)
 
 	axs[0,0].plot(t, signal_buf)

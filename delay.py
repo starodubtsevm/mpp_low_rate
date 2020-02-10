@@ -1,10 +1,10 @@
 import numpy as np
 from const import *
 
-f     = 475
+f     = 525
 fdev  = fmod
 Tstop = 50e-3
-N     = int(Tstop/(1/fs))
+N     = int(Tstop/(1/3000))
 
 def calc(f):
 

@@ -1,5 +1,8 @@
 from prepare_signal import *
 from plot import *
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import fft, arange
 
 #--------------------------------------
 for i in range(sim_point):
@@ -39,5 +42,33 @@ for i in range(sim_point):
 #-----plot-results-----------------------------------------------------------
 #plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err_buf)
 
-#plt.show()
+#f, Pxx_den = signal.periodogram(filter_buf, fs)
+#plt.ylim([1e-2, 1e6])
+#plt.semilogy(f, Pxx_den)
+
+def plotSpectrum(y,Fs):
+	n = len(input_signal_buf) # length of the signal
+	k = np.arange(n)
+	T = n/Fs
+	frq = k/T # two sides frequency range
+	frq = frq[range(n//2)] # one side frequency range
+
+	Y = fft(y)/n # fft computing and normalization
+	Y = Y[range(n//2)]
+ 
+	plt.plot(frq,abs(Y),'r') # plotting the spectrum
+	plt.xlabel('Freq (Hz)')
+	plt.ylabel('|Y(freq)|')
+
+Fs=fs
+y=input_signal_buf
+
+plt.subplot(2,1,1)
+plt.plot(t,y)
+plt.xlabel('Time')
+plt.ylabel('Amplitude')
+plt.subplot(2,1,2)
+plotSpectrum(y,Fs)
+
+plt.show()
 #----------------------------------------------------------------------------

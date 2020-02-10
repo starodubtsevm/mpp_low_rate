@@ -11,10 +11,13 @@ from IIR2Filter import *
 from decode import *
 
 noise1 = white_noise(0)
-fsk1 = fsk_gen(525,235*1,0x2c)	# source fsk signal
+fsk1 = fsk_gen(525,235*0,0x2c)	# source fsk signal
 fsk2 = fsk_gen(475,235*10,0x3c)	# interference fsk signal 1
-fsk3 = fsk_gen(575,235*10,0x3c)	# interference fsk signal 2
+fsk3 = fsk_gen(575,235*10,0x5a)	# interference fsk signal 2
+
+limiter0_in = limiter (-200,200)
 limiter_in = limiter (-2,2)	# input limiter
+
 chan_fir = fir(h_bpf_525)	#.channel filter
 det = fsk_det(19.55)		# fsk detector #19.55@525
 det_iir = IIR2Filter(4, [10], 'low',design='cheby1',rs = 2, fs=fs)
@@ -25,6 +28,7 @@ decoder1 = decode()
 noise_buf         =  []
 signal_buf        =  []
 signal2_buf       =  []
+limiter0_buf      =  []
 filter_buf        =  []
 limiter_buf       =  []
 fsk_det_buf       =  []
