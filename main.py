@@ -37,7 +37,7 @@ for i in range(sim_point):
 		new_sample = False
 
 #-----plot-results-----------------------------------------------------------
-plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err_buf)
+#plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err_buf)
 
-plt.show()
+#plt.show()
 #----------------------------------------------------------------------------
