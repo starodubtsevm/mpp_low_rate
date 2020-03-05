@@ -13,10 +13,10 @@ if __name__ == "__main__":
 	from scipy.signal import freqz
 
 	# Sample rate and desired cutoff frequencies (in Hz).
-	fs = 3000
+	fs = 16000
 	fn = fs/2
-	lowcut = 460
-	highcut = 490
+	lowcut = 1
+	highcut = 15
 
 	ntaps = 256
 	taps_hamming = bandpass_firwin(ntaps, lowcut, highcut, fs=fs)
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 		x = float('{:.5f}'.format(taps_hamming[i]))
 		y.append(x)
 	
-#	print (y)
+	print (y)
 
 	# Plot the frequency responses of the filters.
 	plt.figure(1, figsize=(12, 9))

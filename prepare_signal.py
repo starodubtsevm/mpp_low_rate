@@ -11,9 +11,9 @@ from IIR2Filter import *
 from decode import *
 
 noise1 = white_noise(0)
-fsk1 = fsk_gen(525,235*0,0x2c)	# source fsk signal
-fsk2 = fsk_gen(475,235*10,0x3c)	# interference fsk signal 1
-fsk3 = fsk_gen(575,235*10,0x5a)	# interference fsk signal 2
+fsk1 = fsk_gen(525,235*1,0x2c)	# source fsk signal
+fsk2 = fsk_gen(475,235*2,0x3c)	# interference fsk signal 1
+fsk3 = fsk_gen(575,235*2,0x5a)	# interference fsk signal 2
 
 limiter0_in = limiter (-200,200)
 limiter_in = limiter (-2,2)	# input limiter

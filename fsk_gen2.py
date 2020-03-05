@@ -17,10 +17,10 @@ class fsk_gen(object):
 		self.k = 0
 		self.temp = 0
 		self.data_in = []
-		
+
 		for j in range(7, -1, -1):
 			self.data_in.append((self.byte & 1<<j)>>j)
-		
+
 		for i in range(len(t)):
 			if self.data_in[self.k] == 1:
 				self._y.append(self.A * np.cos(2 * np.pi * (self.fc-self.fdev) * t[i]))
