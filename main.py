@@ -40,7 +40,7 @@ for i in range(sim_point):
 		new_sample = False
 
 #-----plot-results-----------------------------------------------------------
-plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err_buf)
+to_plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err_buf)
 
 #f, Pxx_den = signal.periodogram(filter_buf, fs)
 #plt.ylim([1e-2, 1e6])

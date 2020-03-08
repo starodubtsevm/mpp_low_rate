@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from const import *
+from scipy import fft, arange
 
-def plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err_buf):
+def to_plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err_buf):
 
 
 	fig, axs = plt.subplots(3, 2,sharex=True)
@@ -30,3 +31,26 @@ def plot (signal_buf,filter_buf,fsk_det_flt_buf,comp_buf,sem_pll_buf,sem_pll_err
 	axs[2,1].plot(t, sem_pll_err_buf)
 	#axs[2,1].set_ylim(-0.5, 2)
 	axs[2,1].set_xlabel('Error Pll sem output')
+	
+	
+def to_plotSpectrum(y):
+
+	n = len(y) # length of the signal
+	k = arange(n)
+	T = n/fs
+	frq = k/T # two sides frequency range
+	frq = frq[range(n//2)] # one side frequency range
+	Y = fft(y)/n # fft computing and normalization
+	Y = Y[range(n//2)]
+
+	plt.subplot(2,1,1)
+	plt.plot(t, y)
+	plt.xlabel('Time')
+	plt.ylabel('Amplitude')
+	
+	plt.subplot(2,1,2)
+	plt.plot(frq, abs(Y),'r') # plotting the spectrum
+	plt.xlabel('Freq (Hz)')
+	plt.ylabel('|Y(freq)|')
+
+
